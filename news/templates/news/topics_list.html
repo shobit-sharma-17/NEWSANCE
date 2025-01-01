@@ -1,0 +1,88 @@
+{% extends "news/base.html" %}
+{% load static %}
+{% block content %}
+<div class="p-b40">
+    <br><br>
+    <div class="container">
+        <div class="row justify-content-center" style="display:flex; justify-content:center">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                    <img class="card-img-top" src="{% static 'news/images/tech.avif' %}" alt="Tech">
+                    <div class="card-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <h5 class="card-title font-weight-bold" style="color: #333;">Tech</h5>
+                        <a href="{% url 'scrape' %}" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.1rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                    <img class="card-img-top" src="{% static 'news/images/economy.png' %}" alt="Economy">
+                    <div class="card-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <h5 class="card-title font-weight-bold" style="color: #333;">Economy</h5>
+                        <a href="{% url 'scrape1' %}" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.1rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                    <img class="card-img-top" src="{% static 'news/images/sport.jpg' %}" alt="Sports">
+                    <div class="card-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <h5 class="card-title font-weight-bold" style="color: #333;">Sports</h5>
+                        <a href="{% url 'scrape2' %}" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.1rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                    <img class="card-img-top" src="{% static 'news/images/politics.avif' %}" alt="Politics">
+                    <div class="card-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <h5 class="card-title font-weight-bold" style="color: #333;">Politics</h5>
+                        <a href="{% url 'scrape3' %}" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.1rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                    <img class="card-img-top" src="{% static 'news/images/lifestyle.avif' %}" alt="Lifestyle & Health">
+                    <div class="card-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <h5 class="card-title font-weight-bold" style="color: #333;">Lifestyle & Health</h5>
+                        <a href="{% url 'scrape4' %}" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.1rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg" style="border-radius: 15px; overflow: hidden;">
+                    <img class="card-img-top" src="{% static 'news/images/entertainment.avif' %}" alt="Entertainment">
+                    <div class="card-body text-center" style="font-family: 'Poppins', sans-serif;">
+                        <h5 class="card-title font-weight-bold" style="color: #333;">Entertainment</h5>
+                        <a href="{% url 'scrape5' %}" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.1rem;">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-img-top {
+        height: 250px;
+        object-fit: cover;
+    }
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .btn-primary {
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover {
+        background-color: #004085;
+        transform: scale(1.05);
+    }
+</style>
+{% endblock content %}

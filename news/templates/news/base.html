@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="NewSance: Get updated anytime">
+    <meta name="author" content="Gurpreet Singh Sekhon">
+    <meta property="og:title" content="NewSance">
+    <meta property="og:description" content="Stay updated with the latest news.">
+    <meta property="og:image" content="{% static 'news/social-image.jpg' %}">
+    <meta property="og:url" content="http://yourwebsite.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'news/main.css' %}" onerror="this.onerror=null; this.href='https://your-backup-url/main.css';">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'news/favi.ico' %}" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <title>NewSance</title>
+
+    <style>
+        body {
+            padding-top: 70px; /* Adjust according to the navbar height */
+            background: linear-gradient(120deg, #f6d365, #fda085); /* Adds a vibrant gradient background */
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #1e3c72, #2a5298); /* Gradient for the navbar */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a shadow for better visibility */
+            z-index: 1030;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-brand:hover {
+            color: #ffd700; /* Golden hover color for branding */
+        }
+
+        .nav-link {
+            color: #f1f1f1;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ffd700; /* Golden hover for links */
+        }
+
+        .btn-link {
+            color: #f1f1f1;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+            color: #ffd700; /* Matches the golden hover theme */
+        }
+
+        .alert {
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4); /* Gradient background for alerts */
+            color: #333;
+            border: none;
+        }
+
+        a {
+            color: #0066cc;
+        }
+
+        a:hover {
+            color: #ff5733; /* Vibrant hover effect for links */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'starter' %}" aria-label="Go to NewSance homepage">NewSance</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item {% if request.resolver_match.url_name == 'starter' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'starter' %}">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item {% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'menu' %}">My Dashboard</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">
+                            <i class="fas fa-user" style="margin-right: 8px;"></i> Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link align-middle" style="padding: 0; border: none; background: none;">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 8px;"></i> Logout
+                            </button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Django Messages -->
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <!-- Content Block -->
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

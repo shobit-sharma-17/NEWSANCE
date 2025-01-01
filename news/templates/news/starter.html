@@ -1,0 +1,115 @@
+{% extends "news/base1.html" %}
+{% load static %}
+{% block content %}
+	<!-- home
+   ================================================== -->
+   <section id="home" data-parallax="scroll" data-image-src="{% static 'news/images/bg.jpg' %}" data-natural-width=3000 data-natural-height=2000>
+
+        <div class="overlay"></div>
+        <div class="home-content">        
+
+            <div class="row contents">                     
+                <div class="home-content-left">
+
+                    <h3 data-aos="fade-up" style = " font-size: 3.1rem;">Welcome to NewSance</h3>
+                             <br>
+                    <h1 data-aos="fade-up">
+                        Read All<br>
+                        Latest News Here <br>
+                        Stay Updated
+                    </h1>
+
+ 
+                </div>
+
+                <!--<div class="home-image-right">
+                    <img src="{% static 'news/images/iphone-app-470.png' %}"   
+                        data-aos="fade-up">
+                </div>-->
+            </div>
+
+        </div> <!-- end home-content -->
+
+        <ul class="home-social-list">
+            <li>
+                <a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a>
+            </li>
+            <li>
+                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+                <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+                <a href="#" target="_blank"><i class="fa fa-youtube-play"></i></a>
+            </li>
+        </ul>
+        <!-- end home-social-list -->
+
+        <div class="home-scrolldown">
+            <a href="#about" class="scroll-icon smoothscroll">
+                <span>Scroll Down</span>
+                <i class="icon-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+
+    </section> <!-- end home -->  
+
+
+    <!-- about
+    ================================================== -->
+    <section id="about">
+
+        <div class="row about-intro">
+
+            <div class="col-four">
+                <h1 class="intro-header" data-aos="fade-up">About Our Web App</h1>
+            </div>
+            <div class="col-eight">
+                <p class="lead" data-aos="fade-up">
+                    In today's world there is a need to stay updated with latest news from different Fields such as Tech,Economy,Sports,etc.So our Web App keeps user notified about latest news from top websites curated onto their Dashboard. 
+                </p>
+            </div>                       
+            
+        </div>
+
+       
+
+        <div class="row about-how">
+          
+            <h1 class="intro-header" data-aos="fade-up">How The Web App Works?</h1>           
+
+            <div class="about-how-content" data-aos="fade-up">
+                <div class="about-how-steps block-1-2 block-tab-full group">
+
+                    <div class="bgrid step" data-item="1">
+                        <h3>Register</h3>
+                        <p>Register onto the web app to read latest news from top websites and stay updated! 
+                        </p> 
+                    </div>
+
+                    <div class="bgrid step" data-item="2">
+                        <h3>Sign In</h3>
+                        <p>After registering yourself Sign In to view the news related to different fields such as Tech,Economy,Sports,etc 
+                        </p> 
+                    </div>               
+               
+                    <div class="bgrid step" data-item="3">
+                        <h3>Create Profile</h3>
+                        <p>Upload your profile pic.Also you can update your email-id,username and profile pic as and when required by filling a short update form.
+                        </p> 
+                    </div>
+
+                    <div class="bgrid step" data-item="4">
+                        <h3>Read</h3>
+                        <p>Read all your favourite news streams from different websites onto the single website and thatb to free of cost and those annoying Ads. 
+                        </p> 
+                    </div>  
+
+                </div>           
+           </div> <!-- end about-how-content -->
+
+        </div> <!-- end about-how -->
+
+              
+{% endblock %}

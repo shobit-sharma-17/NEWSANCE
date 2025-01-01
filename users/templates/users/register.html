@@ -1,0 +1,22 @@
+{% extends "news/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section p-4" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <form method="POST" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center" style="color: #007bff; font-weight: bold;">Join Us Today</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group text-center">
+            <button class="btn btn-success btn-block" type="submit" style="font-size: 1.2em;">🎉 Sign Up</button>
+        </div>
+    </form>
+    <div class="border-top pt-3 text-center">
+        <small class="text-muted">
+            Already have an account?
+            <a href="{% url 'login' %}" class="text-primary font-weight-bold">Sign In</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

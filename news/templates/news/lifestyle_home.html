@@ -1,0 +1,97 @@
+{% extends "news/base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center;">
+    <h1 style="
+        text-align: center;
+        font-size: 3.1rem; 
+        font-weight: bold; 
+        color: #333; 
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); 
+        transition: all 0.3s ease;">
+        Lifestyle & Health News
+    </h1>
+    <img src="https://cdn-icons-png.flaticon.com/128/6192/6192771.png" 
+         alt="Lifestyle Icon"
+         style="margin-left: 15px; height: 50px; transition: transform 0.3s ease;">
+</div>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        {% for object in object_list %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-sm rounded" style="width: 100%; height: auto; transition: all 0.3s ease;">
+                <img src="{{ object.image }}" class="card-img-top" style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <a href="{{ object.url }}" target="_blank">
+                        <h5 class="card-title">{{ object.title }}</h5>
+                    </a>
+                    <h6>Source: {{ object.source }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination-container mt-4" style="text-align: center;">
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        background-color: #f8f9fa;
+    }
+
+    .card-img-top {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .btn-outline-info {
+        border-color: #17a2b8;
+        color: #17a2b8;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-outline-info:hover {
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+    .btn-info {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-info:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+
+{% endblock content %}
